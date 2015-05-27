@@ -1,0 +1,4 @@
+import tweepy
+
+auth = tweepy.OAuthHandler('', '')
+auth.set_access_token('', '')

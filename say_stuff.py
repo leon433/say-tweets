@@ -4,8 +4,9 @@ import os.path
 from gtts import gTTS
 import subprocess
 
-auth = tweepy.OAuthHandler('', '')
-auth.set_access_token('', '')
+from config import 
+
+sound_file = 'twits.mp3'
 
 api = tweepy.API(auth)
 
@@ -31,14 +32,14 @@ if mentions:
 	speech = '...'.join(speech)
 
 	ts = gTTS(text=speech, lang='en')
-	ts.save('twits.mp3')
+	ts.save(sound_file)
 
 	
 
 	try:
-		subprocess.call(['cvlc', '--play-and-exit', '--volume', '500', 'twits'])
+		subprocess.call(['cvlc', '--play-and-exit', '--volume', '500', sound_file])
 	except OSError:
-		subprocess.call(['mpg123', 'twits.mp3'])
+		subprocess.call(['mpg123', sound_file])
 
 
 else:
