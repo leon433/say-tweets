@@ -4,7 +4,7 @@ import os.path
 from gtts import gTTS
 import subprocess
 
-from config import 
+from config import auth
 
 sound_file = 'twits.mp3'
 
@@ -26,8 +26,10 @@ if mentions:
 		speech.append(line)
 		print(line)
 
-		api.retweet(mention.id) #retweet
-
+		try:
+			api.retweet(mention.id) #retweet
+		except tweepy.error.TweepError:
+			pass # usually caused because the tweet has already been RTed
 
 	speech = '...'.join(speech)
 
