@@ -4,7 +4,7 @@ import os.path
 from gtts import gTTS
 import subprocess
 
-from config import 
+from config import auth
 
 sound_file = 'twits.mp3'
 
